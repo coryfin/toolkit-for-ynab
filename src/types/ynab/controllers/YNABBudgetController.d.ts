@@ -4,5 +4,6 @@ interface YNABBudgetController {
   budgetViewModel?: {
     allBudgetMonthsViewModel: {};
     month: DateWithoutTime;
+    budgetVersionId: string;
   };
 }

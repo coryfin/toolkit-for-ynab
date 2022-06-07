@@ -12,6 +12,7 @@ interface DateWithoutTime {
   isBefore(date: DateWithoutTime): boolean;
   isBetweenMonths(start: DateWithoutTime, end: DateWithoutTime): boolean;
   startOfMonth(): DateWithoutTime;
+  subtractDays(count: number): DateWithoutTime;
   toISOString(): string;
 }
 

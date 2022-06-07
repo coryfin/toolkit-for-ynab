@@ -35,6 +35,9 @@ function toolkitMessageHandler(event) {
       case OutboundMessageType.ToolkitLoaded:
         initializeYNABToolkit();
         break;
+      case 'venmo-login':
+        handleVenmoLoginMessage(event.data.context);
+        break;
       case 'ynab-toolkit-error':
         handleToolkitError(event.data.context);
         break;
@@ -46,6 +49,10 @@ function toolkitMessageHandler(event) {
 
 function handleToolkitError(context) {
   getBrowser().runtime.sendMessage({ type: 'error', context });
+}
+
+function handleVenmoLoginMessage(context) {
+  getBrowser().runtime.sendMessage({ type: 'venmo-login', context });
 }
 
 function handleSetFeatureSetting({ name, value }) {

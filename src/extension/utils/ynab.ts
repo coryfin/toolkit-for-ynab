@@ -1,4 +1,5 @@
 import { getRouter, controllerLookup, serviceLookup } from './ember';
+import { YNABAccountsController } from 'toolkit/types/ynab/controllers/YNABAccountsController';
 
 export function getApplicationController() {
   return controllerLookup<YNABApplicationController>('application');
@@ -41,6 +42,19 @@ export function isCurrentRouteAccountsPage() {
     currentRoute === ynab.constants.RouteNames.AccountsSelect ||
     currentRoute === ynab.constants.RouteNames.AccountsIndex
   );
+}
+
+export function getCurrentBudgetId() {
+  return getBudgetViewModel()?.budgetVersionId;
+}
+
+export function getCurrentAccountId() {
+  return getAccountsController()?.selectedAccountId;
+}
+
+export function getLatestTransaction() {
+  const transactions = getAccountsController()?.accountViewModel.getSortedAndFilteredTransactions();
+  return transactions && transactions[transactions.length - 1];
 }
 
 export function getSelectedAccount() {

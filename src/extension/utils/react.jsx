@@ -51,3 +51,12 @@ export function componentBefore(renderable, element) {
     element.before(div.firstChild);
   }
 }
+
+export function componentReplace(renderable, element) {
+  const div = document.createElement('div');
+  ReactDOM.render(renderable, div);
+  while (element && div.children.length) {
+    element.after(div.firstChild);
+  }
+  element.remove();
+}
